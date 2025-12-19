@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 import renaldi.setya.putra.apicore.exception.ProcessException;
 import renaldi.setya.putra.apicore.service.BaseService;
 import renaldi.setya.putra.apicore.utils.passwordservice.RSAUtil;
-import renaldi.setya.putra.apicore.utils.PasswordGeneratorUtils;
 import renaldi.setya.putra.apiinternal.feign.userdataservice.UserDataService;
 import renaldi.setya.putra.apiinternal.feign.userdataservice.dto.registration.RegistrationRequest;
 import renaldi.setya.putra.apiinternal.feign.userdataservice.dto.registration.RegistrationResponse;
 import renaldi.setya.putra.registrationservice.dto.register.RegisterRequest;
 import renaldi.setya.putra.registrationservice.dto.register.RegisterResponse;
+import renaldi.setya.putra.sharedutils.utils.PasswordGeneratorUtils;
 
 import static renaldi.setya.putra.apicore.constant.ErrorCodeConstant.*;
 import static renaldi.setya.putra.apicore.constant.MessageConstant.*;
