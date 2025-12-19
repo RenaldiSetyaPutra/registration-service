@@ -26,6 +26,6 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public RegisterResponse createPassword(@Valid @RequestBody RegisterRequest request){
-        return registrationService.register(request);
+        return registrationService.execute(request);
     }
 }

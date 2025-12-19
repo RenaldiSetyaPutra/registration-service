@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import renaldi.setya.putra.apicore.exception.ProcessException;
+import renaldi.setya.putra.apicore.service.BaseService;
 import renaldi.setya.putra.apicore.utils.passwordservice.RSAUtil;
 import renaldi.setya.putra.apicore.utils.PasswordGeneratorUtils;
 import renaldi.setya.putra.apiinternal.feign.userdataservice.UserDataService;
@@ -19,11 +20,12 @@ import static renaldi.setya.putra.registrationservice.constant.RegistrationConst
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class RegistrationService {
+public class RegistrationService extends BaseService<RegisterRequest,RegisterResponse> {
     private final UserDataService userDataService;
     private final RSAUtil rsaUtil;
 
-    public RegisterResponse register(RegisterRequest request) {
+    @Override
+    protected RegisterResponse process(RegisterRequest request) {
         String encPsd = rsaUtil.encrypt(PasswordGeneratorUtils.generatePassword());
 
         RegistrationResponse registrationResponse = userDataService.registration(RegistrationRequest.builder()
@@ -44,8 +46,8 @@ public class RegistrationService {
         }
 
         return RegisterResponse.builder()
-                .idMessage("")
-                .enMessage("")
+                .idMessage(SUCCESS_ID_MESSAGE)
+                .enMessage(SUCCESS_EN_MESSAGE)
                 .build();
     }
 }
