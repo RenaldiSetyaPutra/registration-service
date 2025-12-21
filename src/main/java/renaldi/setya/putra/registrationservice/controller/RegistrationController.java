@@ -21,11 +21,11 @@ public class RegistrationController {
 
     @PostMapping("/validate/username")
     public BaseResponse<ValidateUsernameResponse> validateUsername(@Valid @RequestBody ValidateUsernameRequest request) {
-        return new BaseResponse<>(validateUsernameService.execute(request));
+        return new BaseResponse<>(validateUsernameService.execute(request, null));
     }
 
     @PostMapping("/registration")
     public RegisterResponse createPassword(@Valid @RequestBody RegisterRequest request){
-        return registrationService.execute(request);
+        return registrationService.execute(request, null);
     }
 }
